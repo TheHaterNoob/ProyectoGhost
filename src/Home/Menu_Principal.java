@@ -6,7 +6,8 @@ package Home;
 
 import jaco.mp3.player.MP3Player;
 import java.io.File;
-
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 
 
@@ -23,9 +24,10 @@ public class Menu_Principal extends javax.swing.JFrame {
     public Menu_Principal() {
         initComponents();
     }
+    String Soundtrack1 = "Soundtrack1.mp3";
     
-    public static final String SONG = "C:\\Users\\abrah\\Downloads\\Hernandez_Alex_ProyectoGhosts\\src\\Audio\\Soundtrack1.mp3";
-    MP3Player mp3player = new MP3Player(new File(SONG));
+    Media hit = new Media(new File(Soundtrack1).toURI().toString());
+    MediaPlayer mediaPlayer = new MediaPlayer(hit);
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -225,11 +227,11 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-      mp3player.play();
+      mediaPlayer.play();
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-       mp3player.stop();
+       mediaPlayer.stop();
     }//GEN-LAST:event_jButton7MouseClicked
     
     /**
