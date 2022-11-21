@@ -25,7 +25,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }
     
     public static final String SONG = "C:\\Users\\abrah\\Downloads\\Hernandez_Alex_ProyectoGhosts\\src\\Audio\\Soundtrack1.mp3";
-    MP3Player mp3player = new MP3Player(new File(SONG));
+    MP3Player mp3player = new MP3Player(new File (SONG));
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
