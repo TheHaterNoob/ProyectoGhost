@@ -1,11 +1,11 @@
 package Home;
 
-public class Usuario {
+public class Player {
 
     private String usuario;
     private String contrasenia;
 
-    public Usuario(String usuario, String contrasenia) {
+    public Player(String usuario, String contrasenia) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }

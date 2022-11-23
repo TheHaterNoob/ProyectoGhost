@@ -4,7 +4,7 @@
  */
 package Home;
 
-import DAO.UsuarioDao;
+import DAO.PlayerDAO;
 import javax.swing.JOptionPane;
 
 /**
@@ -247,13 +247,13 @@ public class signup extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PassReg1MouseClicked
 
-    public UsuarioDao listausuario2;
+    public PlayerDAO listausuario2;
     private void CuentaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentaButtonMouseClicked
         if (!UserReg.getText().isEmpty() && !PassReg.getText().isEmpty() && !PassReg1.getText().isEmpty()) {
             if (!PassReg.getText().equals(PassReg1.getText())) {
                 JOptionPane.showMessageDialog(this, "Contraseñas no son iguales");
             } else {
-                Usuario usuario = new Usuario(UserReg.getText(), PassReg.getText());
+                Player usuario = new Player(UserReg.getText(), PassReg.getText());
                 if (listausuario2.insertar(usuario)) {
                     JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente");
                 } else {

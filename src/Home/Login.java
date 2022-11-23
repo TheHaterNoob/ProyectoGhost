@@ -1,6 +1,6 @@
 package Home;
 
-import DAO.UsuarioDao;
+import DAO.PlayerDAO;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -13,7 +13,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     Menu_Principal menu = new Menu_Principal();
-    UsuarioDao ListaUsuario = new UsuarioDao();
+    PlayerDAO ListaUsuario = new PlayerDAO();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -336,7 +336,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        Usuario usuario = new Usuario("admin", "admin");
+        Player usuario = new Player("admin", "admin");
         ListaUsuario.insertar(usuario);
     }//GEN-LAST:event_formWindowGainedFocus
 

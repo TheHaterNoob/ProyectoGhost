@@ -1,13 +1,13 @@
 package DAO;
 
-import Home.Usuario;
+import Home.Player;
 import java.util.ArrayList;
 
-public class UsuarioDao {
+public class PlayerDAO {
 
-    public ArrayList<Usuario> usuarios;
+    public ArrayList<Player> usuarios;
 
-    public UsuarioDao() {
+    public PlayerDAO() {
         usuarios = new ArrayList<>();
 
     }
@@ -23,7 +23,7 @@ public class UsuarioDao {
         return n;
     }
 
-    public boolean insertar(Usuario usuario) {
+    public boolean insertar(Player usuario) {
         if (buscar(usuario.getUsuario()) == -1) {
             usuarios.add(usuario);
             return true;
@@ -32,9 +32,9 @@ public class UsuarioDao {
         }
     }
 
-    public boolean modificar(Usuario usuario) {
+    public boolean modificar(Player usuario) {
         if (buscar(usuario.getUsuario()) != -1) {
-            Usuario usuarioaux = obtener(usuario.getUsuario());
+            Player usuarioaux = obtener(usuario.getUsuario());
             usuarioaux.setContrasenia(usuario.getContrasenia());
             return true;
         } else {
@@ -51,7 +51,7 @@ public class UsuarioDao {
         }
     }
 
-    public Usuario obtener(String usuario) {
+    public Player obtener(String usuario) {
 
         if (buscar(usuario) != -1) {
             return usuarios.get(buscar(usuario));
@@ -62,7 +62,7 @@ public class UsuarioDao {
 
     public boolean autentificar(String usuario, String contrasenia) {
         if (obtener(usuario) != null) {
-            Usuario usuarioConsulta = obtener(usuario);
+            Player usuarioConsulta = obtener(usuario);
             if (usuarioConsulta.getUsuario().equals(usuario) && usuarioConsulta.getContrasenia().equals(contrasenia)) {
                 return true;
             } else {
