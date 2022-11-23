@@ -1,18 +1,17 @@
 
 package Home;
+import LOGIC.UsuarioLogic;
 import java.awt.event.*;
-import java.awt.*;
-import java.util.HashMap;
 import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
-boolean pass=true;
-boolean id=true;
 
 
+Menu_Principal menu = new Menu_Principal();
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,6 +32,7 @@ boolean id=true;
         SignupButton = new javax.swing.JLabel();
         messageLabel = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        chkMostrar = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -160,6 +160,13 @@ boolean id=true;
             }
         });
 
+        chkMostrar.setText("Mostrar Contraseña");
+        chkMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkMostrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -184,7 +191,9 @@ boolean id=true;
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(109, 109, 109)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(chkMostrar))))
                         .addGap(0, 30, Short.MAX_VALUE)))
                 .addGap(47, 47, 47))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -219,13 +228,15 @@ boolean id=true;
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(userPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(72, 72, 72)
+                .addGap(18, 18, 18)
+                .addComponent(chkMostrar)
+                .addGap(51, 51, 51)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -259,22 +270,14 @@ boolean id=true;
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
-
-        String userID = userIDField.getText();
-        String password =  String.valueOf(userPasswordField.getPassword());
-
-        if(info2.getLoginInfo().containsKey(userID)){
-            if(info2.getLoginInfo().get(userID).equals(password)){
-                messageLabel.setForeground(Color.green);
-                messageLabel.setText("BIENVENIDO                                        ");
-            } else{
-                messageLabel.setForeground(Color.red);
-                messageLabel.setText("Contraseña incorrecta                          ");
+        if (!userIDField.getText().isEmpty()&&!userPasswordField.getText().isEmpty()) {
+            if(UsuarioLogic.autentificar(userIDField.getText(), userPasswordField.getText())){
+                menu.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
             }
-        }
-        else{
-            messageLabel.setForeground(Color.red);
-            messageLabel.setText("Usuario no encontrado                           ");
+        }else{
+            JOptionPane.showMessageDialog(this, "Por favor complete todos los espacios");
         }
     }//GEN-LAST:event_LoginButtonMouseClicked
 
@@ -287,18 +290,12 @@ boolean id=true;
     }//GEN-LAST:event_userIDFieldActionPerformed
 
     private void userIDFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userIDFieldMouseClicked
-        if(id==true){
-            userIDField.setText("");
-            id=false;
-        }
+      
         
     }//GEN-LAST:event_userIDFieldMouseClicked
 
     private void userPasswordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userPasswordFieldMouseClicked
-        if(pass==true){
-            userPasswordField.setText("");
-            pass=false;
-        }
+      
     }//GEN-LAST:event_userPasswordFieldMouseClicked
 
     private void SignupButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignupButtonMouseClicked
@@ -310,7 +307,14 @@ boolean id=true;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-   Logininfo info2 = new Logininfo();
+
+    private void chkMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarActionPerformed
+       if(chkMostrar.isSelected()){
+           userPasswordField.setEchoChar((char)0);
+       }else
+           userPasswordField.setEchoChar('*');
+    }//GEN-LAST:event_chkMostrarActionPerformed
+   
     /**
      * @param args the command line arguments
      */
@@ -337,6 +341,9 @@ boolean id=true;
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -349,6 +356,7 @@ boolean id=true;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginButton;
     private javax.swing.JLabel SignupButton;
+    private javax.swing.JCheckBox chkMostrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -4,6 +4,9 @@
  */
 package Home;
 
+import LOGIC.UsuarioLogic;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alex1
@@ -15,6 +18,7 @@ public class signup extends javax.swing.JFrame {
      */
     public signup() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 boolean user = true;
 boolean passw = true;
@@ -37,6 +41,8 @@ boolean passw = true;
         PassReg = new javax.swing.JPasswordField();
         jPanel3 = new javax.swing.JPanel();
         CuentaButton = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        PassReg1 = new javax.swing.JPasswordField();
 
         setResizable(false);
 
@@ -51,11 +57,11 @@ boolean passw = true;
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Registro");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("usuario");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("contraseña");
 
@@ -87,6 +93,11 @@ boolean passw = true;
 
         CuentaButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         CuentaButton.setText(" CREA TU CUENTA");
+        CuentaButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CuentaButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -99,26 +110,23 @@ boolean passw = true;
             .addComponent(CuentaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
         );
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Repetir contraseña");
+
+        PassReg1.setBackground(new java.awt.Color(255, 255, 255));
+        PassReg1.setForeground(new java.awt.Color(0, 0, 0));
+        PassReg1.setText("Contraseña");
+        PassReg1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PassReg1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PassReg, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UserReg, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,6 +136,25 @@ boolean passw = true;
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel5))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(UserReg)
+                    .addComponent(PassReg, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                    .addComponent(PassReg1))
+                .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,15 +163,19 @@ boolean passw = true;
                 .addComponent(jLabel1)
                 .addGap(9, 9, 9)
                 .addComponent(jLabel2)
-                .addGap(61, 61, 61)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(UserReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(PassReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
+                .addGap(34, 34, 34)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(PassReg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(72, Short.MAX_VALUE))
         );
@@ -188,6 +219,7 @@ boolean passw = true;
         if(user==true){
             UserReg.setText("");
             PassReg.setText("");
+            PassReg1.setText("");
             user=false;
             passw=false;
         }
@@ -198,10 +230,38 @@ boolean passw = true;
         if(passw==true){
             PassReg.setText("");
             UserReg.setText("");
+            PassReg1.setText("");
             passw=false;
             user=false;
         }
     }//GEN-LAST:event_PassRegMouseClicked
+
+    private void PassReg1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PassReg1MouseClicked
+       if(passw==true){
+            PassReg.setText("");
+            UserReg.setText("");
+            PassReg1.setText("");
+            passw=false;
+            user=false;
+        }
+    }//GEN-LAST:event_PassReg1MouseClicked
+
+    private void CuentaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentaButtonMouseClicked
+       if(!UserReg.getText().isEmpty()&&!PassReg.getText().isEmpty()&&!PassReg1.getText().isEmpty()){
+           if(!PassReg.getText().equals(PassReg1.getText())){
+               JOptionPane.showMessageDialog(this, "Contraseñas no son iguales");
+           }else{
+           Usuario usuario = new Usuario(UserReg.getText(),PassReg.getText());
+           if(UsuarioLogic.insertar(usuario)){
+               JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente");
+           }else{
+           JOptionPane.showMessageDialog(this, "Usuario ya existente");
+       }
+           } 
+       }else{
+           JOptionPane.showMessageDialog(this, "LLENE TODOS LOS ESPACIOS");
+       }
+    }//GEN-LAST:event_CuentaButtonMouseClicked
 
     /**
      * @param args the command line arguments
@@ -241,11 +301,13 @@ boolean passw = true;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CuentaButton;
     private javax.swing.JPasswordField PassReg;
+    private javax.swing.JPasswordField PassReg1;
     private javax.swing.JTextField UserReg;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
