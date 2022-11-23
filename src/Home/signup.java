@@ -4,7 +4,7 @@
  */
 package Home;
 
-import LOGIC.UsuarioLogic;
+import DAO.UsuarioDao;
 import javax.swing.JOptionPane;
 
 /**
@@ -246,16 +246,18 @@ boolean passw = true;
         }
     }//GEN-LAST:event_PassReg1MouseClicked
 
+
+public UsuarioDao listausuario2;
     private void CuentaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentaButtonMouseClicked
        if(!UserReg.getText().isEmpty()&&!PassReg.getText().isEmpty()&&!PassReg1.getText().isEmpty()){
            if(!PassReg.getText().equals(PassReg1.getText())){
                JOptionPane.showMessageDialog(this, "Contraseñas no son iguales");
            }else{
-           Usuario usuario = new Usuario(UserReg.getText(),PassReg.getText());
-           if(UsuarioLogic.insertar(usuario)){
-               JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente");
-           }else{
-           JOptionPane.showMessageDialog(this, "Usuario ya existente");
+                 Usuario usuario = new Usuario(UserReg.getText(),PassReg.getText());
+                if(listausuario2.insertar(usuario)){                
+                        JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente");
+                }else{
+                JOptionPane.showMessageDialog(this, "Usuario ya existente");
        }
            } 
        }else{

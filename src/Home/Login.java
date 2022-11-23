@@ -1,9 +1,11 @@
 
 package Home;
-import LOGIC.UsuarioLogic;
+import DAO.UsuarioDao;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
+
 
     public Login() {
         initComponents();
@@ -12,6 +14,8 @@ public class Login extends javax.swing.JFrame {
 
 
 Menu_Principal menu = new Menu_Principal();
+UsuarioDao ListaUsuario = new UsuarioDao();
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -36,6 +40,18 @@ Menu_Principal menu = new Menu_Principal();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                formFocusGained(evt);
+            }
+        });
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(51, 0, 51));
 
@@ -271,7 +287,7 @@ Menu_Principal menu = new Menu_Principal();
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
         if (!userIDField.getText().isEmpty()&&!userPasswordField.getText().isEmpty()) {
-            if(UsuarioLogic.autentificar(userIDField.getText(), userPasswordField.getText())){
+            if(ListaUsuario.autentificar(userIDField.getText(), userPasswordField.getText())){              
                 menu.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
@@ -301,6 +317,7 @@ Menu_Principal menu = new Menu_Principal();
     private void SignupButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignupButtonMouseClicked
         // TODO add your handling code here:
         signup s =  new signup();
+        s.listausuario2=ListaUsuario;
         s.setVisible(true);
     }//GEN-LAST:event_SignupButtonMouseClicked
 
@@ -314,11 +331,22 @@ Menu_Principal menu = new Menu_Principal();
        }else
            userPasswordField.setEchoChar('*');
     }//GEN-LAST:event_chkMostrarActionPerformed
+
+    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+
+    }//GEN-LAST:event_formFocusGained
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+Usuario usuario = new Usuario("admin","admin");
+ListaUsuario.insertar(usuario);
+    }//GEN-LAST:event_formWindowGainedFocus
    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -3,19 +3,19 @@ package DAO;
 
 import Home.Usuario;
 import java.util.ArrayList;
-import java.util.List;
-
 public class UsuarioDao {
-    private List<Usuario> usuarios ;
+    public ArrayList<Usuario> usuarios ;
+    
 
     public UsuarioDao() {
         usuarios = new ArrayList<>();
+        
     }
     public int buscar(String usuario){
         int n= -1;
         for (int i = 0; i < usuarios.size(); i++) {
             if(usuarios.get(i).getUsuario().equals(usuario)){
-                n=1;
+                n=i;
                 break;
             }
         }
@@ -47,10 +47,23 @@ public class UsuarioDao {
         }
     }
     public Usuario obtener(String usuario){
+        
         if(buscar(usuario)!=-1){
             return usuarios.get(buscar(usuario));
         } else{
             return null;
         }
+    }
+    public  boolean autentificar(String usuario, String contrasenia){
+        if (obtener(usuario)!=null) {
+            Usuario usuarioConsulta=obtener(usuario);
+            if (usuarioConsulta.getUsuario().equals(usuario)&&usuarioConsulta.getContrasenia().equals(contrasenia)) {
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+        return false;
+    }
     }
 }
