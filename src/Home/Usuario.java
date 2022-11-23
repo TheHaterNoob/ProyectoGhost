@@ -1,7 +1,7 @@
-
 package Home;
 
 public class Usuario {
+
     private String usuario;
     private String contrasenia;
 
@@ -25,5 +25,5 @@ public class Usuario {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
+
 }

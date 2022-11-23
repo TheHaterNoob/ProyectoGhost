@@ -20,8 +20,9 @@ public class signup extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-boolean user = true;
-boolean passw = true;
+    boolean user = true;
+    boolean passw = true;
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -212,57 +213,56 @@ boolean passw = true;
     }// </editor-fold>//GEN-END:initComponents
 
     private void UserRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserRegActionPerformed
-        
+
     }//GEN-LAST:event_UserRegActionPerformed
 
     private void UserRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UserRegMouseClicked
-        if(user==true){
+        if (user == true) {
             UserReg.setText("");
             PassReg.setText("");
             PassReg1.setText("");
-            user=false;
-            passw=false;
+            user = false;
+            passw = false;
         }
-        
+
     }//GEN-LAST:event_UserRegMouseClicked
 
     private void PassRegMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PassRegMouseClicked
-        if(passw==true){
+        if (passw == true) {
             PassReg.setText("");
             UserReg.setText("");
             PassReg1.setText("");
-            passw=false;
-            user=false;
+            passw = false;
+            user = false;
         }
     }//GEN-LAST:event_PassRegMouseClicked
 
     private void PassReg1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PassReg1MouseClicked
-       if(passw==true){
+        if (passw == true) {
             PassReg.setText("");
             UserReg.setText("");
             PassReg1.setText("");
-            passw=false;
-            user=false;
+            passw = false;
+            user = false;
         }
     }//GEN-LAST:event_PassReg1MouseClicked
 
-
-public UsuarioDao listausuario2;
+    public UsuarioDao listausuario2;
     private void CuentaButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CuentaButtonMouseClicked
-       if(!UserReg.getText().isEmpty()&&!PassReg.getText().isEmpty()&&!PassReg1.getText().isEmpty()){
-           if(!PassReg.getText().equals(PassReg1.getText())){
-               JOptionPane.showMessageDialog(this, "Contraseñas no son iguales");
-           }else{
-                 Usuario usuario = new Usuario(UserReg.getText(),PassReg.getText());
-                if(listausuario2.insertar(usuario)){                
-                        JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente");
-                }else{
-                JOptionPane.showMessageDialog(this, "Usuario ya existente");
-       }
-           } 
-       }else{
-           JOptionPane.showMessageDialog(this, "LLENE TODOS LOS ESPACIOS");
-       }
+        if (!UserReg.getText().isEmpty() && !PassReg.getText().isEmpty() && !PassReg1.getText().isEmpty()) {
+            if (!PassReg.getText().equals(PassReg1.getText())) {
+                JOptionPane.showMessageDialog(this, "Contraseñas no son iguales");
+            } else {
+                Usuario usuario = new Usuario(UserReg.getText(), PassReg.getText());
+                if (listausuario2.insertar(usuario)) {
+                    JOptionPane.showMessageDialog(this, "Usuario Registrado correctamente");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Usuario ya existente");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "LLENE TODOS LOS ESPACIOS");
+        }
     }//GEN-LAST:event_CuentaButtonMouseClicked
 
     /**

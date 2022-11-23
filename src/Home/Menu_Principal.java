@@ -7,16 +7,11 @@ package Home;
 import jaco.mp3.player.MP3Player;
 import java.io.File;
 
-
-
-
-
-
 /**
  *
  * @author Alejandro
  */
-public class Menu_Principal extends javax.swing.JFrame  {
+public class Menu_Principal extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu_Principal
@@ -25,8 +20,9 @@ public class Menu_Principal extends javax.swing.JFrame  {
         initComponents();
     }
 
-    public static final  String SONG = "Soundtrack1.mp3";
-    MP3Player mp3player = new MP3Player(new File (SONG));
+    public static final String SONG = "Soundtrack1.mp3";
+    MP3Player mp3player = new MP3Player(new File(SONG));
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -227,23 +223,23 @@ public class Menu_Principal extends javax.swing.JFrame  {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-     
-          mp3player.play();
+
+        mp3player.play();
 
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-       mp3player.stop();
+        mp3player.stop();
     }//GEN-LAST:event_jButton7MouseClicked
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

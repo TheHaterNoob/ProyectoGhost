@@ -1,20 +1,19 @@
-
 package Home;
+
 import DAO.UsuarioDao;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-public class Login extends javax.swing.JFrame {
 
+public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
-
-Menu_Principal menu = new Menu_Principal();
-UsuarioDao ListaUsuario = new UsuarioDao();
+    Menu_Principal menu = new Menu_Principal();
+    UsuarioDao ListaUsuario = new UsuarioDao();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -286,13 +285,13 @@ UsuarioDao ListaUsuario = new UsuarioDao();
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
-        if (!userIDField.getText().isEmpty()&&!userPasswordField.getText().isEmpty()) {
-            if(ListaUsuario.autentificar(userIDField.getText(), userPasswordField.getText())){              
+        if (!userIDField.getText().isEmpty() && !userPasswordField.getText().isEmpty()) {
+            if (ListaUsuario.autentificar(userIDField.getText(), userPasswordField.getText())) {
                 menu.setVisible(true);
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "Por favor complete todos los espacios");
         }
     }//GEN-LAST:event_LoginButtonMouseClicked
@@ -306,18 +305,18 @@ UsuarioDao ListaUsuario = new UsuarioDao();
     }//GEN-LAST:event_userIDFieldActionPerformed
 
     private void userIDFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userIDFieldMouseClicked
-      
-        
+
+
     }//GEN-LAST:event_userIDFieldMouseClicked
 
     private void userPasswordFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_userPasswordFieldMouseClicked
-      
+
     }//GEN-LAST:event_userPasswordFieldMouseClicked
 
     private void SignupButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignupButtonMouseClicked
         // TODO add your handling code here:
-        signup s =  new signup();
-        s.listausuario2=ListaUsuario;
+        signup s = new signup();
+        s.listausuario2 = ListaUsuario;
         s.setVisible(true);
     }//GEN-LAST:event_SignupButtonMouseClicked
 
@@ -326,10 +325,10 @@ UsuarioDao ListaUsuario = new UsuarioDao();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void chkMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkMostrarActionPerformed
-       if(chkMostrar.isSelected()){
-           userPasswordField.setEchoChar((char)0);
-       }else
-           userPasswordField.setEchoChar('*');
+        if (chkMostrar.isSelected()) {
+            userPasswordField.setEchoChar((char) 0);
+        } else
+            userPasswordField.setEchoChar('*');
     }//GEN-LAST:event_chkMostrarActionPerformed
 
     private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
@@ -337,16 +336,15 @@ UsuarioDao ListaUsuario = new UsuarioDao();
     }//GEN-LAST:event_formFocusGained
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-Usuario usuario = new Usuario("admin","admin");
-ListaUsuario.insertar(usuario);
+        Usuario usuario = new Usuario("admin", "admin");
+        ListaUsuario.insertar(usuario);
     }//GEN-LAST:event_formWindowGainedFocus
-   
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
 
-        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
