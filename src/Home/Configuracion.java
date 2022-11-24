@@ -39,7 +39,7 @@ public class Configuracion extends javax.swing.JFrame {
         jLabel2.setText("MENU PRINCIPAL");
         jLabel2.setToolTipText("");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 0, 51));

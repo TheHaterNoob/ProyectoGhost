@@ -45,6 +45,7 @@ public class signup extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         PassReg1 = new javax.swing.JPasswordField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
