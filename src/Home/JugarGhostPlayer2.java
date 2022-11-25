@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author Alejandro
  */
 public class JugarGhostPlayer2 extends javax.swing.JFrame {
-
+Tablero_principal t = new Tablero_principal();
     /**
      * Creates new form JugarGhostPlayer2
      */
@@ -35,6 +35,13 @@ PlayerDAO ListaUsuario = new PlayerDAO();
         LoginButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(51, 0, 51));
         jPanel1.setPreferredSize(new java.awt.Dimension(832, 515));
@@ -122,9 +129,11 @@ PlayerDAO ListaUsuario = new PlayerDAO();
     }//GEN-LAST:event_userIDFieldActionPerformed
 
     private void LoginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LoginButtonMouseClicked
+        
+       
         if (!userIDField.getText().isEmpty()) {
             if(ListaUsuario.obtener(userIDField.getText())!=null){              
-              
+              t.setVisible(true);
             }else{
                 JOptionPane.showMessageDialog(this, "Usuario incorrectos");
             }
@@ -132,6 +141,11 @@ PlayerDAO ListaUsuario = new PlayerDAO();
             JOptionPane.showMessageDialog(this, "Por favor complete todos los espacios");
         }
     }//GEN-LAST:event_LoginButtonMouseClicked
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+       Player usuario = new Player("admin", "admin");
+        ListaUsuario.insertar(usuario);
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
