@@ -1,7 +1,9 @@
-
 package Home;
+
 import java.util.LinkedList;
+
 public class Piece {
+
     int xp;
     int yp;
 

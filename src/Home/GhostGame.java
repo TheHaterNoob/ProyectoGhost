@@ -1,4 +1,3 @@
-
 package Home;
 
 import java.awt.Color;
@@ -16,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class GhostGame {
+
     public static LinkedList<Piece> ps = new LinkedList<>();
     public static Piece selectedPiece = null;
 
@@ -94,7 +94,7 @@ public class GhostGame {
                     selectedPiece.x = e.getX() - 32;
                     selectedPiece.y = e.getY() - 32;
                     frame.repaint();
-                }   
+                }
             }
 
             @Override
@@ -115,10 +115,10 @@ public class GhostGame {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                if(selectedPiece != null ){
-                selectedPiece.move(e.getX() / 64, e.getY() / 64);
-                frame.repaint();
-            }
+                if (selectedPiece != null) {
+                    selectedPiece.move(e.getX() / 64, e.getY() / 64);
+                    frame.repaint();
+                }
             }
 
             @Override
