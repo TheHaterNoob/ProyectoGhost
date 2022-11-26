@@ -538,28 +538,40 @@ public class Tablero_principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("1");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("2");
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("3");
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("4");
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("5");
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("6");
 
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("1");
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("2");
 
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("3");
 
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("4");
 
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("5");
 
+        jLabel12.setBackground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
