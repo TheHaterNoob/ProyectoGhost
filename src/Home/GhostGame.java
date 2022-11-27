@@ -1,5 +1,6 @@
 package Home;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -12,9 +13,15 @@ import java.io.IOException;
 import java.util.LinkedList;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
-public class GhostGame {
+public class GhostGame extends JFrame {
+
+    public GhostGame() {
+
+    }
 
     public static LinkedList<Piece> ps = new LinkedList<>();
     public static Piece selectedPiece = null;
@@ -36,6 +43,7 @@ public class GhostGame {
         Piece P2bueno2 = new Piece(2, 0, false, "bueno", ps);
         Piece P2bueno3 = new Piece(3, 0, false, "bueno", ps);
         Piece P2bueno4 = new Piece(4, 0, false, "bueno", ps);
+
         Piece P2malo1 = new Piece(1, 1, false, "malo", ps);
         Piece P2malo2 = new Piece(2, 1, false, "malo", ps);
         Piece P2malo3 = new Piece(3, 1, false, "malo", ps);
@@ -112,6 +120,7 @@ public class GhostGame {
             int posx2 = 0;
             int posy1 = 0;
             int posy2 = 0;
+            boolean turno1 = true;
 
             @Override
             public void mousePressed(MouseEvent e) {
@@ -124,26 +133,38 @@ public class GhostGame {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (selectedPiece != null) {
-                    if(selectedPiece.Player1){
-                    posx2 = e.getX();
-                    posy2 = e.getY();
-                    if (selectedPiece.ValidateMoveP1(posx1, posy1, posx2, posy2)) {
-                        selectedPiece.move(e.getX() / 64, e.getY() / 64);
-                        frame.repaint();
-                    }else{
-                        selectedPiece.back(e.getX() / 64, e.getY() / 64);
-                        frame.repaint();
-                    }
-                }else{
-                        posx2 = e.getX();
-                    posy2 = e.getY();
-                    if (selectedPiece.ValidateMoveP2(posx1, posy1, posx2, posy2)) {
-                        selectedPiece.move(e.getX() / 64, e.getY() / 64);
-                        frame.repaint();
-                    }else{
-                        selectedPiece.back(e.getX() / 64, e.getY() / 64);
-                        frame.repaint();
-                    }
+                    if (turno1) {
+                        if (selectedPiece.Player1) {
+                            posx2 = e.getX();
+                            posy2 = e.getY();
+                            if (selectedPiece.ValidateMoveP1(posx1, posy1, posx2, posy2)) {
+                                selectedPiece.move(e.getX() / 64, e.getY() / 64);
+                                frame.repaint();
+                                turno1 = !turno1;
+                            } else {
+                                selectedPiece.back(e.getX() / 64, e.getY() / 64);
+                                frame.repaint();
+                            }
+                        } else {
+                            selectedPiece.back(e.getX() / 64, e.getY() / 64);
+                            frame.repaint();
+                        }
+                    } else {
+                        if (selectedPiece.Player1 == false) {
+                            posx2 = e.getX();
+                            posy2 = e.getY();
+                            if (selectedPiece.ValidateMoveP2(posx1, posy1, posx2, posy2)) {
+                                selectedPiece.move(e.getX() / 64, e.getY() / 64);
+                                frame.repaint();
+                                turno1 = !turno1;
+                            } else {
+                                selectedPiece.back(e.getX() / 64, e.getY() / 64);
+                                frame.repaint();
+                            }
+                        } else {
+                            selectedPiece.back(e.getX() / 64, e.getY() / 64);
+                            frame.repaint();
+                        }
                     }
                 }
             }
@@ -170,5 +191,13 @@ public class GhostGame {
             }
         }
         return null;
+    }
+
+    private void initComponents() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private void setLocationRelativeTo(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

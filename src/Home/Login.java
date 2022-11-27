@@ -9,7 +9,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        this.setLocationRelativeTo(null);
+       this.setLocationRelativeTo(null);
     }
 
     Menu_Principal menu = new Menu_Principal();
