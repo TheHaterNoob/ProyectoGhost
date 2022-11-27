@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
@@ -60,7 +61,9 @@ public class GhostGame extends JFrame {
 
         JFrame frame = new JFrame();
         frame.setBounds(10, 10, 384, 384);
-        frame.setUndecorated(true);
+       frame.setUndecorated(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
         JPanel pn = new JPanel() {
             @Override
             public void paint(Graphics g) {
@@ -148,6 +151,7 @@ public class GhostGame extends JFrame {
                         } else {
                             selectedPiece.back(e.getX() / 64, e.getY() / 64);
                             frame.repaint();
+                            JOptionPane.showMessageDialog(pn, "TURNO JUGADOR 1");
                         }
                     } else {
                         if (selectedPiece.Player1 == false) {
@@ -164,6 +168,7 @@ public class GhostGame extends JFrame {
                         } else {
                             selectedPiece.back(e.getX() / 64, e.getY() / 64);
                             frame.repaint();
+                            JOptionPane.showMessageDialog(pn, "TURNO JUGADOR 2");
                         }
                     }
                 }
