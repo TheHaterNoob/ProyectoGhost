@@ -87,9 +87,12 @@ public class GhostGame {
 
         };
         frame.add(pn);
+
         frame.addMouseMotionListener(new MouseMotionListener() {
+
             @Override
             public void mouseDragged(MouseEvent e) {
+
                 if (selectedPiece != null) {
                     selectedPiece.x = e.getX() - 32;
                     selectedPiece.y = e.getY() - 32;
@@ -105,10 +108,15 @@ public class GhostGame {
             @Override
             public void mouseClicked(MouseEvent e) {
             }
+            int posx1 = 0;
+            int posx2 = 0;
+            int posy1 = 0;
+            int posy2 = 0;
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                posx1 = e.getX();
+                posy1 = e.getY();
                 selectedPiece = getPiece(e.getX(), e.getY());
 
             }
@@ -116,8 +124,27 @@ public class GhostGame {
             @Override
             public void mouseReleased(MouseEvent e) {
                 if (selectedPiece != null) {
-                    selectedPiece.move(e.getX() / 64, e.getY() / 64);
-                    frame.repaint();
+                    if(selectedPiece.Player1){
+                    posx2 = e.getX();
+                    posy2 = e.getY();
+                    if (selectedPiece.ValidateMoveP1(posx1, posy1, posx2, posy2)) {
+                        selectedPiece.move(e.getX() / 64, e.getY() / 64);
+                        frame.repaint();
+                    }else{
+                        selectedPiece.back(e.getX() / 64, e.getY() / 64);
+                        frame.repaint();
+                    }
+                }else{
+                        posx2 = e.getX();
+                    posy2 = e.getY();
+                    if (selectedPiece.ValidateMoveP2(posx1, posy1, posx2, posy2)) {
+                        selectedPiece.move(e.getX() / 64, e.getY() / 64);
+                        frame.repaint();
+                    }else{
+                        selectedPiece.back(e.getX() / 64, e.getY() / 64);
+                        frame.repaint();
+                    }
+                    }
                 }
             }
 
