@@ -62,7 +62,6 @@ public class GhostGame extends JFrame {
         JFrame frame = new JFrame();
         frame.setBounds(10, 10, 384, 384);
        frame.setUndecorated(true);
-        frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         JPanel pn = new JPanel() {
             @Override
