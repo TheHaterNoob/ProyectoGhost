@@ -1,6 +1,6 @@
 # Ghost Game
 
-Ghost Game made for programming I class
+Ghost Game made for programming I class made in Java
 
 You need to create at least two accounts to play, the first account getting logged in
 will be considered player 1, after login in, you will access the main menu where you can chose the game mode and difficulty.
